@@ -1,26 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
+using CompulsoryAssignment1Assignment1;
 
 namespace CompulsoryAssignment1Assignment4
 {
     public class TCPService
     {
         private TcpClient _connectionSocket;
-        private TcpListener _serverSocket;
 
         public TCPService(TcpClient connection)
         {
             _connectionSocket = connection;
         }
 
-        public TCPService(ref TcpClient connection, ref TcpListener server)
+        private List<Book> getBooks()
         {
-            _connectionSocket = connection;
-            _serverSocket = server;
+            return BooksList.books;
+        }
+
+        private Book getBook(string isbn13)
+        {
+            return BooksList.books.FirstOrDefault(b => b.ISBN13 == isbn13);
+        }
+
+        private void saveBook(Book saveBook)
+        {
+            BooksList.books.Add(saveBook);
         }
 
         internal void SendReceiveData()
