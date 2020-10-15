@@ -51,13 +51,13 @@ namespace CompulsoryAssignment1Assignment4
                 switch (messageArray[0])
                 {
                     case "get":
-                        answer = JsonSerializer.Serialize();
+                        answer = JsonSerializer.Serialize(getBook(messageArray[1]));
                         break;
                     case "getAll":
-                        answer = JsonSerializer.Serialize();
+                        answer = JsonSerializer.Serialize(getBooks());
                         break;
                     case "save":
-                        answer = JsonSerializer.Serialize();
+                        saveBook(JsonSerializer.Deserialize<Book>(messageArray[1]));
                         break;
                     default:
                         answer = "Request Does Not Exist";
