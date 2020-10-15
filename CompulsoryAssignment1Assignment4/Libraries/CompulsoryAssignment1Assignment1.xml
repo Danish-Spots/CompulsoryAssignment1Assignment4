@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CompulsoryAssignment1Assignment1</name>
+    </assembly>
+    <members>
+        <member name="M:CompulsoryAssignment1Assignment1.Book.#ctor">
+            <summary>
+            Default constructor, takes no arguments and creates an empty book object.
+            </summary>
+        </member>
+        <member name="M:CompulsoryAssignment1Assignment1.Book.#ctor(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Book constructor that takes all the properties as arguments, so you can set the properties when creating the object.
+            </summary>
+            <param name="title">The title of the book (type string), must be 2 characters minimum</param>
+            <param name="authour">The authour of the book (type string)</param>
+            <param name="pageNumber">The total number of pages in the book (type int), must be 10 pages or more, up to and including 1000 pages</param>
+            <param name="isbn13">The isbn13 corresponding to the book (type string), must be 13 characters in length</param>
+        </member>
+        <member name="P:CompulsoryAssignment1Assignment1.Book.Title">
+            <summary>
+            The property for getting and setting the title of a book, type string (minimum of 2 characters)
+            </summary>
+        </member>
+        <member name="P:CompulsoryAssignment1Assignment1.Book.Authour">
+            <summary>
+            The property for getting and setting the authour of a book, type string
+            </summary>
+        </member>
+        <member name="P:CompulsoryAssignment1Assignment1.Book.PageNumber">
+            <summary>
+            The property for getting and setting the total page count of a book, type int (must be a value of 10 or higher, up to and including 1000)
+            </summary>
+        </member>
+        <member name="P:CompulsoryAssignment1Assignment1.Book.ISBN13">
+            <summary>
+            The property for getting and setting the ISBN13 of the book, type string (must be 13 characters long)
+            </summary>
+        </member>
+    </members>
+</doc>
