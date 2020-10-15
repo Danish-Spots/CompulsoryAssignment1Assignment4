@@ -45,8 +45,11 @@ namespace CompulsoryAssignment1Assignment4
 
             while (!string.IsNullOrEmpty(message))
             {
+                
                 Console.WriteLine("Client: " + message);
-                string[] messageArray = message.Split(' ');
+
+                string[] messageArray = ConvertMessageToArray(message);
+
 
                 switch (messageArray[0])
                 {
@@ -57,6 +60,7 @@ namespace CompulsoryAssignment1Assignment4
                         answer = JsonSerializer.Serialize(getBooks());
                         break;
                     case "save":
+                        answer = "";
                         saveBook(JsonSerializer.Deserialize<Book>(messageArray[1]));
                         break;
                     default:
@@ -64,12 +68,36 @@ namespace CompulsoryAssignment1Assignment4
                         break;
                 }
 
-                sw.WriteLine(answer);
-                message = sr.ReadLine();
+                
+                try
+                {
+                    sw.WriteLine(answer);
+                    message = sr.ReadLine();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    
+                    break;
+                }
+                
             }
 
+            Console.WriteLine("Closing Connection");
             networkStream.Close();
             _connectionSocket.Close();
+        }
+
+        private string[] ConvertMessageToArray(string message)
+        {
+            string[] tempArray = message.Split("|");
+
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                tempArray[i] = tempArray[i].Trim();
+            }
+
+            return tempArray;
         }
     }
 }
